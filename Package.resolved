@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "BaseSwift",
+        "repositoryURL": "https://github.com/nallick/BaseSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "01ce84095547b5887f03b63e72861eebc8f64762",
+          "version": "1.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
