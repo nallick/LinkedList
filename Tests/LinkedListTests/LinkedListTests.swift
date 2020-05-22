@@ -369,8 +369,12 @@ final class LinkedListTests: XCTestCase {
     }
 
     func testLargeSortInPlace() {
+        let loopMultiplier = Int(CommandLine.parameters?["--TestLoopMultiplier"]?.first ?? "") ?? 1
+        let loopCount = 2000*loopMultiplier
+        let range = 5000*loopMultiplier
+
         var list = LinkedList<Int>()
-        for _ in 1...20_000 { list.append(Int.random(in: 0 ..< 50_000)) }
+        for _ in 1...loopCount { list.append(Int.random(in: 0 ..< range)) }
 
         list.sort()
 
