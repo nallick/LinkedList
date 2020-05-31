@@ -732,6 +732,7 @@ extension LinkedListTests {
         ("testNodeAtIndex", testNodeAtIndex),
         ("testNodeAtOffset", testNodeAtOffset),
         ("testPartition", testPartition),
+        ("testReflection", testReflection),
         ("testRemoveAtEnd", testRemoveAtEnd),
         ("testRemoveAtStart", testRemoveAtStart),
         ("testRemovingAllFromListRemovesAllItems", testRemovingAllFromListRemovesAllItems),
