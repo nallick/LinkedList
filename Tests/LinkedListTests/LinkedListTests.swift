@@ -578,6 +578,15 @@ final class LinkedListTests: XCTestCase {
         XCTAssertEqual(list.description, "[1, 2, 3]")
     }
 
+    func testReflection() {
+        let list = LinkedList(1, 2, 3)
+
+        let mirror = list.customMirror
+        let reflectedChildren = mirror.children.compactMap { $0.1 as? Int }
+
+        XCTAssertEqual(reflectedChildren, [1, 2, 3])
+    }
+
     func testInitializeFromSequence() {
         let expectedValue = [1, 2, 3]
         let sequence = AnySequence(expectedValue)
