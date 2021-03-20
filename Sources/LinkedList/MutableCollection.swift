@@ -43,8 +43,8 @@ extension LinkedList: MutableCollection {
             let next2 = node2.next
             self.storage.remove(node1)
             self.storage.remove(node2)
-            _ = self.storage.insert(node: node1, before: next2)
-            _ = self.storage.insert(node: node2, before: (next1 === node2) ? node1 : next1)
+            self.storage.insert(node: node1, before: next2)
+            self.storage.insert(node: node2, before: (next1 === node2) ? node1 : next1)
         } else {
             let element1 = node1.element
             node1.updateElement(node2.element, in: self.storage)

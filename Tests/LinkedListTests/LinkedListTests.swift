@@ -665,12 +665,16 @@ final class LinkedListTests: XCTestCase {
         q1.sync {}
         q2.sync {}
         q3.sync {}
+        q4.sync {}
+        q5.sync {}
 
         let array = Array(list)
         XCTAssertEqual(array.prefix(3), [1, 2, 3])
         XCTAssertEqual(copy1.map { $0 - 1000 }, array)
         XCTAssertEqual(copy2.map { $0 - 2000 }, array)
         XCTAssertEqual(copy3.map { $0 - 3000 }, array)
+        XCTAssertEqual(copy4.map { $0 - 4000 }, array)
+        XCTAssertEqual(copy5.map { $0 - 5000 }, array)
     }
 }
 
