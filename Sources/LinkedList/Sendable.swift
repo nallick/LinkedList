@@ -7,5 +7,5 @@
 import Foundation
 
 @available(swift 5.5)
-@available(iOS 15.0, macOS 12.0, *)
+@available(iOS 13, macOS 10.15, watchOS 8, tvOS 13, *)
 extension LinkedList: @unchecked Sendable where Element: Sendable {}

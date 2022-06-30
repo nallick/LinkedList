@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "LinkedList",
-    platforms: [.iOS(.v10), .macOS(.v10_12)],
+    platforms: [.iOS(.v10), .macOS(.v10_13)],
     products: [
         .library(
             name: "LinkedList",

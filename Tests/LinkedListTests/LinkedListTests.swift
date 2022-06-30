@@ -511,23 +511,23 @@ final class LinkedListTests: XCTestCase {
         XCTAssertEqual(list2.map { $0.value }, [2, 1, 3])
     }
 
-//  This fails because the default partition implementation doesn't reset indices after swapAt().
-//
-//    func testCustomNodePartition() {
-//        var list = LinkedList(CustomNode(1), CustomNode(2), CustomNode(3), CustomNode(4))
-//        let partitionValue = 3
-//
-//        let secondPartition = list.partition { $0.value > partitionValue }
-//
-//        let values = list.map { $0.value }
-//        print(values)
-//
-//        let ultimateIndex = list.index(before: list.endIndex)
-//        let penultimateIndex = list.index(before: ultimateIndex)
-//        XCTAssertEqual(secondPartition, penultimateIndex)
-//        XCTAssertGreaterThan(list[penultimateIndex].value, partitionValue)
-//        XCTAssertGreaterThan(list[ultimateIndex].value, partitionValue)
-//    }
+    //  This fails because the default partition implementation doesn't reset indices after swapAt().
+    //
+    //    func testCustomNodePartition() {
+    //        var list = LinkedList(CustomNode(1), CustomNode(2), CustomNode(3), CustomNode(4))
+    //        let partitionValue = 3
+    //
+    //        let secondPartition = list.partition { $0.value > partitionValue }
+    //
+    //        let values = list.map { $0.value }
+    //        print(values)
+    //
+    //        let ultimateIndex = list.index(before: list.endIndex)
+    //        let penultimateIndex = list.index(before: ultimateIndex)
+    //        XCTAssertEqual(secondPartition, penultimateIndex)
+    //        XCTAssertGreaterThan(list[penultimateIndex].value, partitionValue)
+    //        XCTAssertGreaterThan(list[ultimateIndex].value, partitionValue)
+    //    }
 
     func testNodeAtOffset() {
         let nodes = (1...7).map { _ in CustomNode() }
@@ -675,6 +675,20 @@ final class LinkedListTests: XCTestCase {
         XCTAssertEqual(copy3.map { $0 - 3000 }, array)
         XCTAssertEqual(copy4.map { $0 - 4000 }, array)
         XCTAssertEqual(copy5.map { $0 - 5000 }, array)
+    }
+
+    @available(swift 5.5)
+    @available(iOS 13, macOS 10.15, watchOS 8, tvOS 13, *)
+    func testListsAreSendable() async {
+        enum TestSendable: Sendable { case list(LinkedList<Int>) }  // if this compiles without warning (or error in Swift 6 and later) then lists are Sendable
+
+        let testValue = [1, 2, 3]
+        let testEnum = TestSendable.list(LinkedList(testValue))
+
+        var list = LinkedList(Array<Int>())
+        if case let .list(testList) = testEnum { list = testList }
+
+        XCTAssertEqual(Array(list), testValue)
     }
 }
 
